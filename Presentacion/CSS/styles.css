@@ -1,0 +1,452 @@
+/*Division en la que john mircha trabaja*/
+/*despues de custom properties y reseteo empezar con la cabecera*/
+/*******Custom Properties*******/
+:root {
+    /*definicion de colores, usualmente ocupar nombres relacionados*/
+    --first-color:#171717;
+    --first-1-color:#101010;
+    --first-2-color:#292929;
+    --first-alpha-color:#171717c8;
+    --first-hover-alpha-color:#171717c8;
+    --second-color:#d6d0d0;
+    --second-hover-color:#d6d0d0;
+    --second-1-color:#aea7a7;
+    --second-2-color:#f1f1f1;
+    --second-alpha-color:#d6d0d0cb;
+    --second-hover-alpha-color:#d6d0d0cb;
+    --main-blue-dark: #539bee;
+	--main-blue: #c9def4;
+	--main-blue-light: #dbe9f8;
+	--main-pink-dark: #e71484;
+	--main-pink: #ff1493;
+	--main-pink-light: #ffb6c1;
+	--main-purple-dark: #4d3dff;
+	--main-purple: #c2bcff;
+	--main-purple-light: #bdb7ff;
+    --link-color:#d6d0d0;
+    --text-color:#d6d0d0;
+    --title-color:#e2e0e0;
+    --white-color:#FFF;
+    --white-alpha-color:#ffffff80;
+    --black-color:#000;
+    --black-alpha-color:rgba(0,0,0,0.5);
+    /*Definicion de tipografias
+    --main-purple-dark: #4d3dffcd;
+    --white-alpha-color:#ffffffca;
+    */
+    --font:sans-serif;
+    /*alto de la cabecera*/
+    --header-height:3.5rem;
+}
+/*********Reseto CSS*********/
+/*reseteado de modelo de caja*/
+html {
+    box-sizing: border-box;
+    font-family:var(--font);
+    font-size:16px;/*definir explicitamente lo que va a equivaler 1rem*/
+    scroll-behavior: smooth;/*efecto de animacion del scroll*/
+}
+*,*::after,*::before{
+    box-sizing: inherit;    
+}
+body {
+    margin:0;
+    color:var(--text-color);
+    background-color: var(--first-color);
+}
+/*enlaces*/
+a {
+    color:var(--link-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+svg {
+    fill: var(--link-color);
+    min-height: 100%;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+}
+/*tamaños de tipografias en rems, 
+recomendable editar el margin para que despues podamos agregarlo explicitamente*/
+h1  {
+    margin:0;
+    font-size:4rem;
+}
+h2 {
+    margin:0;
+    font-size:2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+h3 {
+    margin:0;
+    font-size:1.25rem;
+}
+h4 {
+    margin:0;
+    font-size:1rem;
+}
+h5 {
+    margin:0;
+    font-size:.85rem;
+}
+h6 {
+    margin:0;
+    font-size:.7rem;
+}
+img, video, audio {
+    max-width:100%;
+    height:auto;
+}
+p { /*altura de la linea sea de 1.6, 
+    tiene que ver un poco con el tamaño de la letra, como un interlineado*/
+    line-height: 1;
+    margin: 0;
+    font-size: 1.8rem;
+}
+/*SCROLLBAR*/
+::-webkit-scrollbar{
+    width: 1rem;
+    z-index: -1;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--second-alpha-color);
+    border-radius: 100vw;
+    
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--second-hover-color);
+    
+}
+/***************************ESTILOS POR DEFECTOS*********************************/
+/*MENU*/
+.container-animation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column; 
+    z-index: 999;
+}
+.bar-animaton{
+    width: 100%;
+    height: calc(100% /6);
+    background-color: var(--link-color);
+    transition: transform 1s ease-in-out,background-color .5s ease-in-out;
+}
+.button-container{
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out;
+}
+.button-container > button{
+    width: 80%;
+    height: 50%;
+    border-radius: 20px;
+    background-color:var(--first-2-color);
+    color: var(--second-color);
+    font-size: 5rem;
+    transition: background-color 0.5s ease-in-out;
+}
+.button-container > button:hover{
+    cursor: pointer;
+    background-color: var(--first-1-color);
+}
+/*HEADER*/
+.header-container {
+    z-index: 998;
+    height: var(--header-height);
+    position: fixed;
+    width: calc(100% - 1rem);
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: transform 3s ease-in-out;
+}
+header {
+    height: var(--header-height);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    background-size: 300%;
+    background-position: left;
+    transition: background-position 1s;
+}
+header *{
+    font-size: 3rem;
+}
+.topic{
+    height: 100%;
+    width: 60%;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out,padding 0.5s ease-in-out;
+}
+.topic > p{
+    height: 3.3rem;
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    margin: 0;
+    color: var(--link-color);
+}
+.nav-mobile{
+    pointer-events: none;
+    position: fixed;
+    transform: translateX(-100%);
+}
+.nav{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+.nav > div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.nav > a{
+    padding: 0 1rem;
+    height: 100%;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+} 
+.nav > a p{
+    margin: 0;
+    margin-top: 1px;
+    padding: 0;
+    text-align: center;
+    line-height:1;
+    pointer-events: none;
+}
+
+.nav > a:hover{
+    background-color: var(--second-hover-alpha-color);
+    color: var(--first-hover-alpha-color);
+}
+.nav > a:hover svg{
+    fill: var(--first-alpha-color) !important;
+}
+
+
+/*CONTENEDORES Y CUERPO*/
+.slides {
+    width: 100%;
+    background-color: var(--first-color);
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type:block proximity ;/*recibe dos valores, el primero es el eje que quiero controlar
+                        (x | y | inline | block| both), para el desplazamiento en x ponemos 
+                        la palabra x o inline, para el desplazamiento en y puede ser y o block, 
+                        el segundo es si quieres que sea un movimiento mandatorio(efecto mandatory)
+                        el otro es proximity tiene que estar mas hacia la otra diapositiva */
+}
+
+.slide{
+    width: 100%;
+    height: inherit;
+    scroll-snap-align:center ;/*hacia donde se van a alinear, end (final) | start (inicio) | center*/
+}
+.slide-container{
+    position: relative;
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.slide .carousel[data-direction="row"]{
+    flex-direction: row;
+}
+.slide .carousel[data-direction="column"]{
+    flex-direction: column;
+}
+
+.slide .carousel[data-direction="row"][data-start="end"]{
+    flex-direction: row-reverse;
+}
+.slide [data-direction="column"][data-start="end"]{
+    flex-direction: column-reverse;
+}
+.slide-container .content{
+    min-width:100% ;
+    height: calc(100% - var(--header-height));
+    margin-top: var(--header-height);
+    padding:1rem;
+}
+.content > h2{
+    width: 100%;
+    text-align: center;
+}
+.carousel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 1s ease-in-out;
+    
+}
+.slide .carousel[data-direction="column"] .content{
+    min-height: calc(100% - var(--header-height));
+}
+
+
+
+
+
+/*****************SECCION 1*******************/
+
+
+/*****************SECCION 2*******************/
+
+
+/*****************SECCION 3*******************/
+
+
+/*****************SECCION 4*******************/
+
+
+/*****************SECCION 5*******************/
+
+
+/*****************SECCION 6*******************/
+
+
+/*****************SECCION 7*******************/
+
+
+/*****************SECCION 8*******************/
+
+
+/*****************REGLAS*******************/
+[data-section="9"] .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+[data-section="9"] ol{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    border: thin solid blue;
+    flex-direction: column;
+    align-items: space-between;
+}
+[data-section="9"] ol > li{
+    width: 100%;
+    margin: auto;
+    border: thin solid white;
+}
+[data-section="9"] .players{
+    width: 25%;
+    height: 100%;
+    padding-left: 2rem;
+    overflow: auto;
+}
+[data-section="9"] .player-container{
+    width: 100%;
+}
+/*SCROLL BAR*/
+[data-section="9"] .players::-webkit-scrollbar{
+    width: 2px !important;
+    z-index: -1;
+}
+[data-section="9"] .players ::-webkit-scrollbar-thumb {
+    background-color: var(--second-alpha-color);
+    border-radius: 90vw;
+    
+}
+[data-section="9"] .players ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--first-hover-alpha-color);
+    
+}
+[data-section="9"] .player-container:hover{
+    background-color: var(--second-hover-alpha-color);
+    cursor: pointer;
+    
+}
+[data-section="9"] .player-container:hover p{
+    color: var(--first-alpha-color);
+    
+}
+[data-section="9"] .player-container > p{
+    padding: 6px 10px;
+    min-width: 50%;
+    max-width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/*****************LOTERY*******************/
+
+
+/*****************BIBLIOGRAFY*******************/
+
+
+
+
+/*GENERIC*/
+.opacity-1{
+    opacity: 1;
+}
+.opacity-0{
+    opacity: 0;
+}
+.display-none{
+    display: none;
+}
+.pointer-events-none{
+    pointer-events: none;
+}
+.visibility-hidden{
+    visibility: hidden;
+}
+
+
+
+
+
+.txtC-blue-dark{
+    color: var(--main-blue-dark);
+}
+.bgC-bd{
+    background-color: var(--main-blue-dark);
+}
+.bC-bd{
+    border-color:var(--main-blue-dark);
+}
+
+
+.bW-th{
+    border-width: thin;
+}
+.bW-md{
+    border-width: medium;
+}
+.bW-tk{
+    border-width: thick;
+}
