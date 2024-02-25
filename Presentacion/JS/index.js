@@ -260,7 +260,7 @@ const screenChange = function () {
   }
 };
 //FUNCION PARA SABER EN QUE SECCION ESTAMOS
-const scrollSpy = function () {
+const scrollSpy = async function () {
   let callback = (entries, observer) => {
     entries.forEach((entry) => {
       if (
@@ -280,6 +280,9 @@ const scrollSpy = function () {
             $topicCon.style.setProperty("padding", "0 1rem");
             $topicCon.style.setProperty("width", "60%");
           }, 600);
+        }
+        if(p.$section.getAttribute("data-first-time")==="true"){
+          section2StartAnimations();
         }
       }
     });
@@ -385,9 +388,75 @@ const conectionOnline = function () {
   }, 3000);
 };
 
+
+//FUNCIONES DE SECCION 2
+const section2StartAnimations=async function(){
+  await stairsEffect(p.$section.querySelector("[data-slide='1'] .content-1"));
+  //timeou(500);
+  stairsEffect(p.$section.querySelector("[data-slide='1'] .content-2"));
+}
+const stairsEffect=async function($container){
+  console.log($container);
+  
+  for (let i = 0; i < $container.children.length; i++) {
+    $container.children[i].classList.remove("translate-x-100");
+    await timeout(400);
+  }
+}
+const openInfo=async function($container){
+  const $labels=document.querySelectorAll("[data-section='2'] [data-topic]");
+  $labels.forEach(element => {
+      if(element!=$container){
+        element.parentElement.classList.add("translate-x-100");  
+        element.classList.add("width-0");
+        element.parentElement.classList.add("width-0");
+      }
+      element.classList.add("pointer-events-none");
+  });
+  await timeout(500);
+  $labels.forEach(element => {
+    if(element!=$container){
+      
+    }
+  });
+  $container.parentElement.classList.add("show-info");
+  $container.setAttribute("data-is-open",'open');
+  await timeout(500)
+  $container.classList.add("info");
+  await timeout(1500);
+  $labels.forEach(element => {
+    element.classList.remove("pointer-events-none");
+  });
+
+} 
+const closeInfo=async function($container){
+  console.log($container);
+  const $labels=document.querySelectorAll("[data-section='2'] [data-topic]");
+  //$container.classList.add("pointer-events-none");
+  
+  $labels.forEach(element => {
+    element.classList.add("pointer-events-none");
+  });
+  $container.classList.remove("info");
+  $labels.forEach(element => {
+    if(element!=$container){
+      element.parentElement.classList.remove("translate-x-100");  
+      element.classList.remove("width-0");
+      element.parentElement.classList.remove("width-0");
+    }
+  });
+  await timeout(550);
+  $container.parentElement.classList.remove("show-info");
+  await timeout(550);
+  $container.setAttribute("data-is-open",'close');
+  $labels.forEach(element => {
+    element.classList.remove("pointer-events-none");
+  });
+} 
+
 document.addEventListener("DOMContentLoaded", () => {
   darkLightModeStart();
-  //nimationPage(null,0);
+  animationPage(null,0);
   setTimeout(() => {
     $body.addEventListener("click", (e) => {
       if (
@@ -405,6 +474,16 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.target.matches(".button-container > button")) {
         animationPage(null, 0);
       }
+      if (e.target.matches(".graphcontainer") ||
+        e.target.matches(".graphcontainer *")) {
+          if(e.target.getAttribute("data-is-open")==="close"){
+            openInfo(e.target);
+          }
+          else{
+            closeInfo(e.target);
+          }
+        
+      }
     });
   }, 2000); //el 1000 es tiempo en milisegundos, es el tiempo de retardo que va a ejecutar las instrucciones
   //size screen listener
@@ -417,24 +496,3 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const conocimientos = document.querySelector("#conocimientos"),
-  textos = document.querySelector("#textos"),
-  lengua = document.querySelector("#lengua");
-conocimientos.addEventListener("click", () => {
-  textos.classList.toggle("hide");
-  lengua.classList.toggle("hide");
-  conocimientos.classList.toggle("displaysubtext");
-});
-
-lengua.addEventListener("click", () => {
-  textos.classList.toggle("hide");
-  conocimientos.classList.toggle("hide");
-  lengua.classList.toggle("displaysubtext");
-});
-
-textos.addEventListener("click", () => {
-  conocimientos.classList.toggle("hide");
-  lengua.classList.toggle("hide");
-  textos.classList.toggle("displaysubtext");
-});
-console.log(conocimientos.classList);
