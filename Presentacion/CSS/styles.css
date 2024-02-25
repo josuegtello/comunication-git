@@ -348,17 +348,19 @@ header *{
     
 }
 [data-section="9"] ol{
-    width: 75%;
+    width: 72%;
     height: 100%;
     display: flex;
-    border: thin solid blue;
     flex-direction: column;
     align-items: space-between;
 }
 [data-section="9"] ol > li{
+    font-size: 1.9rem;
     width: 100%;
     margin: auto;
-    border: thin solid white;
+}
+[data-section="9"] ol > li > p{
+    text-align: justify;
 }
 [data-section="9"] .players{
     width: 25%;
@@ -368,6 +370,26 @@ header *{
 }
 [data-section="9"] .player-container{
     width: 100%;
+    height: 3rem;
+    display: flex;
+    padding: 6px 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease-in-out;
+}
+[data-section="9"] .player-container[data-click="1"]{
+    background-color: var(--second-color);
+}
+[data-section="9"] .player-container[data-click="1"]:hover{
+    background-color: var(--second-color);
+}
+[data-section="9"] .player-container[data-click="1"] p{
+    color: var(--first-alpha-color);
+    
+}
+[data-section="9"] .player-container[data-click="1"]:hover p{
+    color: var(--first-color);
 }
 /*SCROLL BAR*/
 [data-section="9"] .players::-webkit-scrollbar{
@@ -393,15 +415,79 @@ header *{
     
 }
 [data-section="9"] .player-container > p{
-    padding: 6px 10px;
+    pointer-events: none;
     min-width: 50%;
-    max-width: 90%;
+    max-width: 95%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    transition: color 0.3s ease-in-out;
+}
+[data-section="9"] .player-container > .delete-player-icon{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;
+    opacity: 0.75;
+    transition: opacity 0.3s ease-in-out;
+}
+[data-section="9"] .player-container > .delete-player-icon svg{
+   fill: var(--first-color);
+}
+[data-section="9"] .player-container > .delete-player-icon:hover{
+    opacity: 1;
+}
+/*****************LOTERY*******************/
+[data-section="10"] .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: thin solid wheat;
+}
+/*Cortina*/
+[data-section="10"] .cortain{
+    position: absolute;
+    width: 100%;
+    height: calc(100% - var(--header-height));
+    top: var(--header-height);
+    left: 0;
+    background-color: var(--first-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+[data-section="10"] .cortain > button{
+    border-color: transparent;
+    width: 50%;
+    height: 40%;
+    border-radius: 20px;
+    background-color:var(--first-2-color);
+    color: var(--second-color);
+    font-size: 5rem;
+    transition: background-color 0.5s ease-in-out;
+}
+[data-section="10"] .cortain > button:hover{
+    cursor: pointer;
+    background-color: var(--first-1-color);
+}
+/*Flechas*/
+.arrow{
+    width: 10%;
+    height: 50%;
+    border: thin solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.arrow > svg{
+    width: 100%;
+
 }
 
-/*****************LOTERY*******************/
 
 
 /*****************BIBLIOGRAFY*******************/
