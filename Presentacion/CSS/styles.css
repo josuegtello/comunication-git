@@ -485,6 +485,7 @@ header *{
 }
 .arrow > svg{
     width: 100%;
+    border: thin solid blue;
 
 }
 
