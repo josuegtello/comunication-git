@@ -283,6 +283,7 @@ const scrollSpy = async function () {
         }
         if(p.$section.getAttribute("data-first-time")==="true"){
           section2StartAnimations();
+          p.$section.setAttribute("data-first-time","false")
         }
       }
     });
