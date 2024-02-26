@@ -3,28 +3,28 @@
 /*******Custom Properties*******/
 :root {
     /*definicion de colores, usualmente ocupar nombres relacionados*/
-    --first-color:#171717;
-    --first-1-color:#101010;
-    --first-2-color:#292929;
-    --first-alpha-color:#171717c8;
-    --first-hover-alpha-color:#171717c8;
-    --second-color:#d6d0d0;
-    --second-hover-color:#d6d0d0;
-    --second-1-color:#aea7a7;
-    --second-2-color:#f1f1f1;
-    --second-alpha-color:#d6d0d0cb;
-    --second-hover-alpha-color:#d6d0d0cb;
-    --main-blue-dark: #539bee;
-	--main-blue: #c9def4;
-	--main-blue-light: #dbe9f8;
-	--main-pink-dark: #e71484;
-	--main-pink: #ff1493;
-	--main-pink-light: #ffb6c1;
-	--main-purple-dark: #4d3dff;
-	--main-purple: #c2bcff;
-	--main-purple-light: #bdb7ff;
-    --link-color:#d6d0d0;
-    --text-color:#d6d0d0;
+    --first-color:#171717; /*1*/
+    --first-1-color:#101010; /*2*/
+    --first-2-color:#292929; /*3*/
+    --first-alpha-color:#171717c8; /*4*/
+    --first-hover-alpha-color:#171717c8; /*5*/
+    --second-color:#d6d0d0; /*6*/
+    --second-hover-color:#d6d0d0; /*7*/
+    --second-1-color:#aea7a7; /*8*/
+    --second-2-color:#f1f1f1; /*9*/
+    --second-alpha-color:#d6d0d0cb; /*10*/
+    --second-hover-alpha-color:#d6d0d0cb; /*11*/
+    --main-blue-dark: #004697; /*12*/
+	--main-blue: #3496ff; /*13*/
+	--main-blue-light: #8bbdf2; /*14*/
+	--main-pink-dark: #e71484; /*15*/
+	--main-pink: #ff1493; /*16*/
+	--main-pink-light: #ffb6c1; /*17*/
+	--main-purple-dark: #4d3dff; /*18*/
+	--main-purple: #c2bcff; /*19*/
+	--main-purple-light: #bdb7ff; /*20*/
+    --link-color:#d6d0d0; /*21*/
+    --text-color:#d6d0d0; /*22*/
     --title-color:#e2e0e0;
     --white-color:#FFF;
     --white-alpha-color:#ffffff80;
@@ -446,7 +446,6 @@ header *{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border: thin solid wheat;
 }
 /*Cortina*/
 [data-section="10"] .cortain{
@@ -474,19 +473,133 @@ header *{
     cursor: pointer;
     background-color: var(--first-1-color);
 }
+[data-section="10"] .cards-container{
+    width:80%;
+    height: 100%;
+    overflow: hidden;
+}
+[data-section="10"] .cards{
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    transition: transform 1s ease-in-out;
+}
+[data-section="10"] .cards > .card-container{
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+[data-section="10"] .card-container > .card{
+    width: 35%;
+    height: 80%;
+}
+[data-section="10"] .card-container > .card > .card-front{
+    background-color: var(--second-2-color);
+}
+[data-section="10"] .card-container > .card > .card-front svg{
+    fill: var(--first-2-color);
+}
+[data-section="10"] .card-container > .card > .card-front .img-container-card svg{
+    width: 85%;
+}
+[data-section="10"] .card-container > .card > .card-front *{
+    color: var(--first-2-color);
+}
+[data-section="10"] .card-container > .card > .card-back{
+    background-color: var(--first-2-color);
+}
+[data-section="10"] .card-container > .card > .card-back *{
+    color: var(--second-2-color);
+}
+[data-section="10"] .card-container > .card > * {
+    padding: 3rem 1rem;
+}
+[data-section="10"] .card-container > .card > * > *{
+    margin-bottom: 1rem;
+}
+[data-section="10"] .text-container{
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    position: relative;
+    cursor: pointer;
+}
+.card.flip-effect{
+    perspective: 10px;
+    transform-style:preserve-3d;
+    transition:transform 1s ease-in-out ;
+}
+.card > .flip-cd{
+   position: absolute;
+   overflow: hidden;
+   border-radius: 50px;
+   width: 100%;
+   height: 100%;
+   border: thick solid transparent;
+   transition: border-color 0.5s ease-in-out;
+   backface-visibility: hidden; /**back face visibility, cuando tenemos un elemento de interfaz de dos lados,
+    va a determinar como se visualizan esas caras, visible es el defecto
+    hidden, no tiene efecto en transformaciones de 2 dimensiones*/
+}
+.card > *{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.card *{
+    text-align: justify; 
+}
+.card > * > *{
+    width: 90%;
+}
+.card > .card-front{
+    transform: rotateY(0deg);
+}
+.card > .card-back{
+    transform: rotateY(180deg);
+    background-color:var(--main-blue) ;
+}
+.flip-effect[data-action="hover"]:hover{
+    transform: rotateY(180deg);
+}
+.card > * > .img-container-card{
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flip-effect-active{
+    transform: rotateY(180deg);
+}
+
 /*Flechas*/
 .arrow{
     width: 10%;
     height: 50%;
-    border: thin solid white;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: opacity 0.5s ease-in-out;
 }
 .arrow > svg{
+    height: 100%;
     width: 100%;
-    border: thin solid blue;
-
+    opacity: 0.5;
+    fill: var(--second-alpha-color);
+}
+.arrow:hover{
+    cursor: pointer;
+}
+.arrow:hover > svg{
+    opacity: 1;
+    fill: var(--second-color);
 }
 
 

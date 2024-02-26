@@ -84,28 +84,28 @@ const colorsVariables=[
     "--text-color",
 ]
 const darkColor=[
-    "#171717",
-    "#101010",
-    "#292929",
-    "#171717c8",
-    "#171717c8",
-    "#d6d0d0",
-    "#d6d0d0",
-    "#aea7a7",
-    "#f1f1f1",
-    "#d6d0d0cb",
-    "#d6d0d0cb",
-    "#539bee",
-	"#c9def4",
-	"#dbe9f8",
-	"#e71484",
-	"#ff1493",
-	"#ffb6c1",
-	"#4d3dff",
-	"#c2bcff",
-	"#bdb7ff",
-    "#d6d0d0",
-    "#d6d0d0",
+    "#171717", //1
+    "#101010", //2
+    "#292929", //3
+    "#171717c8", //4
+    "#171717c8", //5
+    "#d6d0d0", //6
+    "#d6d0d0", //7
+    "#aea7a7", //8
+    "#f1f1f1", //9
+    "#d6d0d0cb", //10
+    "#d6d0d0cb", //11
+    "#004697", // 12
+	"#3496ff", //13
+	"#8bbdf2", //14
+	"#e71484", //15
+	"#ff1493", //16
+	"#ffb6c1", //17
+	"#4d3dff", //18
+	"#c2bcff", //19
+	"#bdb7ff", //20
+    "#d6d0d0", //21
+    "#d6d0d0", //22
 ]
 const lightColor=[
     "#d6d0d0", //first-color
@@ -415,7 +415,7 @@ const deletePlayer=function($container=null,action,position=null){
     if(action===true){ //procedemos a eliminar al contenedor, le mandamos informacion al ESP32 y que le llegue 
         let $aux,issue;
         const $listContainer=document.querySelector("[data-section='9'] .players");
-        if($container!=null){ //implica que el que va a borrar el elemento es el boton
+        if(($container!=null)&&(position===null)){ //implica que el que va a borrar el elemento es el boton
             $aux=$container.parentElement;
         }
         else{ //se nos notifico que se desconecto un dispositivo
@@ -468,9 +468,6 @@ const deletePlayer=function($container=null,action,position=null){
 }
 //funcion en caso de que uno de los jugadores alla perdido la conexion
 
-const cardsControl=function($container){
-    
-}
 
 
 // deletePlayer(JSON.parse('{"numPlayer":2'));
@@ -485,7 +482,63 @@ const playerConnectionLost=function(data=null,issue=null){//data es el JSON que 
 
 
 }
-
+//funciones para la loteria
+const carouselControl=function($container,carouselSelector,direction){ //funcion que estara activa siempre que demos click a las flechas, el carousel funcionara de izquierda 
+    //direction[x,y], donde los valores son 1,-1 y 0
+    const $carousel=document.querySelector(carouselSelector);
+    //primero movemos el carousel
+    
+    
+    let x=100,y=100
+    let actualPosition=Number($carousel.getAttribute("data-content"))
+    if(($container.getAttribute("data-direction")==="FORWARD")&&
+        (actualPosition<$carousel.children.length-1)){ //si va hacia adelante le sumamos uno y sea diferente a los contenedores totales
+        actualPosition++;
+        const $another=$container.parentElement.querySelector('.arrow[data-direction="BACK"]');
+        console.log($another)
+        if(actualPosition===$carousel.children.length-1){
+            $container.classList.add("opacity-0");
+            $container.classList.add("pointer-events-none");
+        }
+        else{
+            if($another.classList.contains("opacity-0")){
+                $another.classList.remove("opacity-0");
+                $another.classList.remove("pointer-events-none");
+            }
+        }
+    }
+    else if(($container.getAttribute("data-direction")==="BACK")&&
+        (actualPosition>0)){ //le restamos 1 si la posicion actual es difente de 0
+        actualPosition--;
+        const $another=$container.parentElement.querySelector('.arrow[data-direction="FORWARD"]');
+        console.log($another)
+        if(actualPosition===0){//llegamos al limite desaparecemos y deshabilito funciones
+            $container.classList.add("opacity-0");
+            $container.classList.add("pointer-events-none");
+        }
+        else{
+            if($another.classList.contains("opacity-0")){
+                $another.classList.remove("opacity-0");
+                $another.classList.remove("pointer-events-none");
+            }
+        }
+    }
+    x=x*actualPosition;
+    y=y*actualPosition;
+    $carousel.style.setProperty("transform",`translate(${x*direction[0]}%,${y*direction[1]})`);
+    $carousel.setAttribute("data-content",actualPosition);
+}
+const cardSelected=function($container,className){//obtenemos el contenedor 
+    console.log($container);
+    if($container.getAttribute("data-click")==="0"){
+        $container.classList.add(className);
+        $container.setAttribute("data-click","1");
+    }
+    else{
+        $container.classList.remove(className);
+        $container.setAttribute("data-click","0");
+    }
+}
 
 
 //funcion para agregar puntaje de jugadores
@@ -540,6 +593,13 @@ document.addEventListener("DOMContentLoaded",()=>{
             if(e.target.matches(".delete-player-icon")||e.target.matches(".delete-player-icon *")){ //lista de jugadores de reglas de juego
                 deletePlayer(e.target,true);
             }
+            if(e.target.matches(".card[data-action='click']")||e.target.matches(".card[data-action='click'] *")){ //lista de jugadores de reglas de juego
+                cardSelected(e.target.closest(".card"),"flip-effect-active");
+            }
+            if(e.target.matches("[data-section='10'] .arrow")||e.target.matches("[data-section='10'] .arrow *")){ //lista de jugadores de reglas de juego
+                carouselControl(e.target.closest(".arrow"),"[data-section='10'] .cards",[-1,0]);
+            }
+
             
         });
     },2000); //el 1000 es tiempo en milisegundos, es el tiempo de retardo que va a ejecutar las instrucciones
