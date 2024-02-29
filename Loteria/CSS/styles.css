@@ -374,6 +374,7 @@ header *{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    position: relative;
 }
 [data-section="1"] .cards-container{
     width:100%;
@@ -676,7 +677,29 @@ header *{
     opacity: 1;
     fill: var(--second-color);
 }
+[data-section="1"] .warning-container{
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--main-blue-light);
+    min-height: 3rem;
+    max-height: 8rem;
+    padding: 1rem 2rem;
+    transition: transform 1s ease-in-out;
+}
+[data-section="1"] .warning-container p{
+    font-size: 1.5rem;
+    color: var(--white-color);
 
+    text-align: justify;
+    width: 100%;
+}
 
 
 /*****************BIBLIOGRAFY*******************/

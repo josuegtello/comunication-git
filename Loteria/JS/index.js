@@ -26,7 +26,6 @@ const questions=[
                         "Pragmática",
                         "Sociocultural"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 1'
             },
             {
@@ -38,7 +37,6 @@ const questions=[
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                             <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q54 0 104-17.5t92-50.5L228-676q-33 42-50.5 92T160-480q0 134 93 227t227 93Zm252-124q33-42 50.5-92T800-480q0-134-93-227t-227-93q-54 0-104 17.5T284-732l448 448Z"/>
                         </svg>`,
-                orderOptions:[],
                 nameTarget:'Cual no pertenece 1'
             },
             {
@@ -50,7 +48,6 @@ const questions=[
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                             <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/>
                         </svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra el Autor 1'
             },
             {
@@ -62,7 +59,6 @@ const questions=[
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                             <path d="M160-360v-80h400v80H160Zm0-160v-80h640v80H160Z"/>
                         </svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la consecuencia 1'
             },
             {
@@ -75,7 +71,6 @@ const questions=[
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                             <path d="M480-80q-33 0-56.5-23.5T400-160h160q0 33-23.5 56.5T480-80ZM320-200v-80h320v80H320Zm10-120q-69-41-109.5-110T180-580q0-125 87.5-212.5T480-880q125 0 212.5 87.5T780-580q0 81-40.5 150T630-320H330Z"/>
                         </svg>`,
-                orderOptions:[],
                 nameTarget:'Completa la competencia 1'
             },
             {
@@ -85,17 +80,15 @@ const questions=[
                         "Interpersonal",
                         "Persuasiva"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 2'
             },
             {
                 numQuestion:7,
-                question:'¿Cuál de las siguientes opciones pertenece a las tres ejemplos de las  competencias ejecutivas presentadas?',
+                question:'¿Cuál de las siguientes opciones pertenece a las cuatro ejemplos de las  competencias ejecutivas presentadas?',
                 options:['Capacidad de Planificación',
                         "Flexibilidad Metacognitiva",
                         "Proceso conciliatorio de la lengua"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra el ejemplo 1'
             },
             {
@@ -105,7 +98,6 @@ const questions=[
                         "Proxenetica",
                         "Pragmática"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 3'
             },
             {
@@ -117,7 +109,6 @@ const questions=[
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                             <path d="M280-320h80v-480h-80v480ZM240-80q-50 0-85-35t-35-85v-560q0-50 35-85t85-35h440v640H240q-17 0-28.5 11.5T200-200q0 17 11.5 28.5T240-160h520v-640h80v720H240Z"/>
                         </svg>`,
-                orderOptions:[],
                 nameTarget:'Define la competencia 1'
             },
             {
@@ -127,7 +118,6 @@ const questions=[
                         "Paralingüística",
                         "Proxémica"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 4'
             },
             {
@@ -139,7 +129,6 @@ const questions=[
                         "Competencia Lingüística Particular (Nivel del Significado)",
                         "Saber Elocucional (Nivel de la Designación)"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'A que competencia pertenece 1'
             }, 
             {
@@ -151,7 +140,6 @@ const questions=[
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                             <path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/>
                         </svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra el autor 2'
             },
             {
@@ -163,7 +151,6 @@ const questions=[
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
                             <path d="M400-400h160v-80H400v80Zm0-120h320v-80H400v80Zm0-120h320v-80H400v80Zm-80 400q-33 0-56.5-23.5T240-320v-480q0-33 23.5-56.5T320-880h480q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H320ZM160-80q-33 0-56.5-23.5T80-160v-560h80v560h560v80H160Z"/>
                         </svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra el Componente 1'
             },
             {
@@ -173,7 +160,6 @@ const questions=[
                         "Intra-cultural",
                         "Pragmática"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 5'
             },
             {
@@ -183,7 +169,6 @@ const questions=[
                         "Lingüística",
                         "Pragmática"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 6'
             },
             {
@@ -193,7 +178,6 @@ const questions=[
                         "Competencias pragmáticas",
                         "Competencias socioculturales"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 7'
             },
             {
@@ -203,7 +187,6 @@ const questions=[
                         "Competencia proxémica",
                         "Competencia pragmática"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 8'
             },
             {
@@ -213,7 +196,6 @@ const questions=[
                         "Competencia sociocultural",
                         "Competencia Paralingüística"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 9'
             },
             {
@@ -223,7 +205,6 @@ const questions=[
                         "Competencia metalingüística",
                         "Competencia kinestésica"],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 10'
             },
             {
@@ -233,7 +214,6 @@ const questions=[
                         "Paralingüística",
                         "Metalingüística "],
                 svgIcon:`<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M560-564v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-600q-38 0-73 9.5T560-564Zm0 220v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-380q-38 0-73 9t-67 27Zm0-110v-68q33-14 67.5-21t72.5-7q26 0 51 4t49 10v64q-24-9-48.5-13.5T700-490q-38 0-73 9.5T560-454Zm-40 176q44-21 88.5-31.5T700-320q36 0 70.5 6t69.5 18v-396q-33-14-68.5-21t-71.5-7q-47 0-93 12t-87 36v394Zm-40 118q-48-38-104-59t-116-21q-42 0-82.5 11T100-198q-21 11-40.5-1T40-234v-482q0-11 5.5-21T62-752q47-23 96.5-35.5T260-800q58 0 113.5 15T480-740q51-30 106.5-45T700-800q52 0 101.5 12.5T898-752q11 5 16.5 15t5.5 21v482q0 23-19.5 35t-40.5 1q-37-20-77.5-31T700-240q-60 0-116 21t-104 59Z"/></svg>`,
-                orderOptions:[],
                 nameTarget:'Nombra la competencia 11'
             }
         ]
@@ -471,16 +451,17 @@ const $player=new player("",0)//creamos a nuestro objeto jugador
 const userName=function(){
     const $input=document.querySelector(".username-container > input");
     if($player.playerName!=$input.value){// si es diferente actualizamos 
-        $player.playerName=$input.value
-        $player.issue="UPDATE-USER"
-        //funcion que envie el objeto en general
-        // Enviar dato del jugador al master **PENDIENTE**
-
-
+        $player.playerName=$input.value;
         //Guardar datos del jugador en el local STORAGE ""PENDIENTE"""
         localStorage.removeItem("player")
         localStorage.setItem("player",JSON.stringify($player));
-
+        // Enviar dato del jugador al master **PENDIENTE**
+        const callBackData={
+            issue:'UPDATE-USER',
+            playerName:$player.playerName,
+        }
+        console.log(JSON.stringify(callBackData));
+        connection.send(JSON.stringify(callBackData));
     }
     console.log($player)
     
@@ -647,8 +628,7 @@ const verifyCard=async function(e){
     if($yourAnswer===$correctAnswer){//tu respuesta a sido correcta
         $card.classList.add('pointer-events-none')
         $yourAnswer.classList.remove('option-selected');
-        $yourAnswer.classList.add('correct-answer');
-        $player.issue='UPDATE-SCORE'
+        $yourAnswer.classList.add('correct-answer');     
         $player.score=$player.score + (1000 - (200*tries));
         //enviamos datos al ESP32 para actualizar score
         await timeout(800);
@@ -677,13 +657,18 @@ const verifyCard=async function(e){
             restartCards(); //reiniciamos cards, y jugador pasamos su score a 0
             return;
         }
-        // Enviar dato del jugador al master **PENDIENTE**
+        
         
         //Guardar datos del jugador en el local STORAGE 
         localStorage.setItem("player",JSON.stringify($player));
-
-
-
+        // Enviar dato del jugador al master **PENDIENTE**
+        const callBackData={
+            issue:'UPDATE-USER',
+            numPlayerESP:$player.numPlayerESP,
+            score:$player.score,
+        }
+        console.log(JSON.stringify(callBackData));
+        connection.send(JSON.stringify(callBackData));  
     }
     else{//la respuesta es incorrecta, hacemos lo mismo que cuando cerramos la modal, solo que cambiamos la tarjeta
         // y aumentamos los tries para que el puntaje valga menos
@@ -794,37 +779,99 @@ const numerosAleatorios=function(inicio,final){ //arreglo[n]
 	}
     return ref
 }
-
-
-
-//funcion para el estado de conexion de red y websocket
-const conectionOffline=function(){
-    const   $container=document.querySelector(".lost-recover-conection"),//rescato el elemento html
-            $textContent=document.createElement("p");//creo una etiqueta p
-    $textContent.textContent="Conexion perdida"//le pongo un mensaje a la etiqueta p
-    $container.replaceChild($textContent,$container.firstElementChild); //remplazo la etiqueta p que ya tiene
-    $container.classList.add("red-color");//le agrego una clase para que sea visible
-    setTimeout(()=>{//creo un settimeout para que despues de 3 segundos desaparezca el icono
-        $container.classList.remove("red-color")
-    },3000); 
-    
+const warningMesages=async function(status){
+    const $container=document.querySelector(".warning-container");
+            $TextC=$container.firstElementChild;
+    $TextC.textContent=status;
+    $container.style.setProperty("transform","translateY(0%)");
+    await timeout(4000);
+    $container.style.setProperty("transform","translateY(100%)");
 }
-const conectionOnline=function(){
-    const   $container=document.querySelector(".lost-recover-conection"),
-            $textContent=document.createElement("p");
-    $textContent.textContent="Conexion recuperada"
-    $container.replaceChild($textContent,$container.firstElementChild); 
-    $container.classList.add("green-color")
-    setTimeout(()=>{
-        $container.classList.remove("green-color")
-    },3000); 
+//CONNECTION FUNCTIONS
+//NETWORK FUNCTION
+const connectionOffline=function(){
+    warningMesages('Conexión wifi recuperada');
+}
+const connectionOnline=async function(){
+    warningMesages('Conexión wifi pérdida');
+}
+//WEBSOCKET FUNCTIONS
+
+//WEBSOCKET CONNECTIONS
+// Declaramos la variable global de la conexión
+// Inicializamos la variable con  readyState = WebSocket.CLOSED para evitar reescribir código
+let connection = {
+    readyState: WebSocket.CLOSED
+}
+// Todos los listener es mejor ponerlos en funciones por separado (buena práctica)
+// por si necesitas usarlas en otros lados
+const handleOnMessage=function(event) {
+    let data=JSON.parse(event.data);
+    console.log(event); //tengo que ver que velga tiene este evento
+    if(data.issue==="ROL_COMMUNICATION"){ //mandamos que somos un ESCLAVO
+        //si nos pide que ROL DESEMPENIAMOS ESTMAMOS CONECTADOS.
+        const callBackData={
+                issue:'SLAVE',
+        }
+        //Le mando los datos al ESP32 con el usunto;
+        connection.send(JSON.stringify(callBackData));
+    }
+    else if(data.issue==="MASTER_DONT_HAVE_CONNECTION_YET"){// el maestro todavia no se conecta
+        warningMesages('Presentacion todavia no se ha conctado, espere a que se conecte.');
+    }
+    else if(data.issue==="PORT_COMMUNICATION"){ //nos manda el puerto de comunicacion;
+        $player.numPlayerESP=data.port;
+    }
+    else if(data.issue==="SLAVE_ACTUAL_VIEW"){ //nos manda en que 
+        $cardsObj.actualViewing=data.actualView;
+    }
+    else if(data.issue==="LOST_MASTER_CONNECTION"){ //se perdio comunicacion con el principal
+        warningMesages('Conexión pérdida con la presentación');
+    }
+
+}
+let firstConnection=true;//estara en true solo una vez
+const handleOnOpen=function(event) {
+    console.clear(); //limpiamos la pantalla en la conexion
+    const callBackData={
+        issue:'HELLO_WORLD',
+    }
+    console.log(JSON.stringify(callBackData));
+    connection.send(JSON.stringify(callBackData));
+    let txtMessage;
+    if(firstConnection===true){
+        txtMessage='Conexión exitosa'
+    }
+    else{
+        txtMessage='Conexión recuperada';
+    }
+    firstConnection=false;
+    warningMesages('Conexión exitosa');
+}
+const handleOnClose=function(event) {
+    warningMesages('Conexión pérdida con el servidor');
+    // Tratamos de conectar nuevamente el websocket
+    connectWebSocket();
+}
+const handleOnError=function(event) {
+    console.log("WebSocket error: ", event);
+    warningMesages('Error en comunicación');
 }
 
-
-//funcion para enviar la carta que esta actualmente para que no puedan dar click en tarjetas que no son
-
-
-
+// Función que inicializa el WebSocket
+const connectWebSocket=function(){
+    // no se hace nada si se esta conectado o ya esta conectado
+    if(connection.readyState === WebSocket.CONNECTING || connection.readyState === WebSocket.OPEN) return;
+    connection=new WebSocket(`ws://${location.hostname}:81/`);
+    connection.debug = true;
+    // creo que esta propiedad no sirve 
+    connection.addEventListener("message", handleOnMessage);
+    connection.addEventListener("open", handleOnOpen);
+    connection.addEventListener('close', handleOnClose);  
+    connection.addEventListener("error", handleOnError);
+}
+// Hacemos conexión al webSocket
+ 
 
 document.addEventListener("DOMContentLoaded",()=>{
     darkLightModeStart();
@@ -859,5 +906,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.addEventListener("keyup",(e)=>{
         userName();
     });
+    connectWebSocket();
     
 })
