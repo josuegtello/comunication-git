@@ -31,6 +31,8 @@
     --white-alpha-2-color:#ffffffd8;
     --black-color:#000;
     --black-alpha-color:rgba(0,0,0,0.5);
+    --green-color:green;
+    --red-color:red;
     /*Definicion de tipografias
     --main-purple-dark: #4d3dffcd;
     --white-alpha-color:#ffffffca;
@@ -104,7 +106,7 @@ p { /*altura de la linea sea de 1.6,
     tiene que ver un poco con el tamaño de la letra, como un interlineado*/
     line-height: 1;
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 /*SCROLLBAR*/
 ::-webkit-scrollbar{
@@ -127,7 +129,7 @@ p { /*altura de la linea sea de 1.6,
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     flex-direction: column; 
     z-index: 999;
@@ -140,24 +142,20 @@ p { /*altura de la linea sea de 1.6,
 }
 .button-container{
     position: absolute;
-    width: 50%;
+    width: 90%;
     height: 50%;
     top: 25%;
-    left: 25%;
+    left: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: opacity 0.5s ease-in-out;
-    opacity: 0;
 }
-.button-container > button{
-    width: 80%;
-    height: 50%;
-    border-radius: 20px;
-    background-color:var(--first-2-color);
-    color: var(--second-color);
-    font-size: 5rem;
-    transition: background-color 0.5s ease-in-out;
+.button-container > p{
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--first-color);
+    transition: opacity 0.5s ease-in-out;
 }
 .button-container > button:hover{
     cursor: pointer;
@@ -189,7 +187,7 @@ header *{
     font-size: 1.3rem;
 }
 .username-container{
-    width: calc(90% - 15ex);
+    width: calc(90% - 12ex);
     height: 80%;
     padding: 0;
     margin-left: 1rem;
@@ -208,7 +206,7 @@ header *{
     transition: background-color 0.3s ease-in-out;
 }
 .username-container > input::placeholder{
-    color: var(--second-alpha-color);
+    color: var(--black-alpha-color);
 }
 .username-container > input:focus{
     border-color: transparent;
@@ -219,7 +217,6 @@ header *{
 }
 .topic{
     height: 100%;
-    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -253,7 +250,7 @@ header *{
 }
 
 .nav > a{
-    padding: 0 1rem;
+    padding: 0 .5rem;
     height: 100%;
     border: 2px solid transparent;
     display: flex;
@@ -270,11 +267,11 @@ header *{
     pointer-events: none;
 }
 
-.nav > a:hover{
+.nav > a:active{
     background-color: var(--second-hover-alpha-color);
     color: var(--first-hover-alpha-color);
 }
-.nav > a:hover svg{
+.nav > a:active svg{
     fill: var(--first-alpha-color) !important;
 }
 
@@ -283,7 +280,7 @@ header *{
 .slides {
     width: 100%;
     background-color: var(--first-color);
-    height: 100vh;
+    height: 100lvh;
     scroll-snap-type:block proximity ;/*recibe dos valores, el primero es el eje que quiero controlar
                         (x | y | inline | block| both), para el desplazamiento en x ponemos 
                         la palabra x o inline, para el desplazamiento en y puede ser y o block, 
@@ -293,8 +290,9 @@ header *{
 
 .slide{
     width: 100%;
-    height: inherit;
+    height: 100dvh;
     scroll-snap-align:center ;/*hacia donde se van a alinear, end (final) | start (inicio) | center*/
+    transition: height 0.5s ease-in-out ;
 }
 .slide-container{
     position: relative;
@@ -371,44 +369,18 @@ header *{
 /*****************REGLAS*******************/
 
 /*****************LOTERY*******************/
-[data-section="10"] .content {
+[data-section="1"] .content {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-/*Cortina*/
-[data-section="10"] .cortain{
-    position: absolute;
-    width: 100%;
-    height: calc(100% - var(--header-height));
-    top: var(--header-height);
-    left: 0;
-    background-color: var(--first-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-[data-section="10"] .cortain > button{
-    border-color: transparent;
-    width: 50%;
-    height: 40%;
-    border-radius: 20px;
-    background-color:var(--first-2-color);
-    color: var(--second-color);
-    font-size: 5rem;
-    transition: background-color 0.5s ease-in-out;
-}
-[data-section="10"] .cortain > button:hover{
-    cursor: pointer;
-    background-color: var(--first-1-color);
-}
-[data-section="10"] .cards-container{
+[data-section="1"] .cards-container{
     width:100%;
     height: 100%;
     overflow: hidden;
 }
-[data-section="10"] .cards{
+[data-section="1"] .cards{
     min-width: 100%;
     height: 100%;
     display: grid;
@@ -417,47 +389,155 @@ header *{
 
     transition: transform 1s ease-in-out;
 }
-[data-section="10"] .cards > .card-container{
-    min-width: 100%;
-    min-height: 100%;
+[data-section="1"] .cards > .card-container{
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-[data-section="10"] .card-container > .card{
+[data-section="1"] .card-container > .card{
     width: 95%;
     height: 95%;
 }
-[data-section="10"] .card-container > .card > .card-front{
+[data-section="1"] .card-container > .card > .card-front{
     background-color: var(--second-2-color);
 }
-[data-section="10"] .card-container > .card > .card-front svg{
+[data-section="1"] .card-container > .card > .card-front svg{
     fill: var(--first-2-color);
+    width: 100%;
 }
-[data-section="10"] .card-container > .card > .card-front .img-container-card svg{
-    width: 85%;
-}
-[data-section="10"] .card-container > .card > .card-front *{
+[data-section="1"] .card-container > .card > .card-front *{
     color: var(--first-2-color);
+    text-align: center;
 }
-[data-section="10"] .card-container > .card > .card-back{
+[data-section="1"] .card-container > .card > .card-back{
     background-color: var(--first-color);
+    justify-content: center;
+    align-items: center;
 }
-[data-section="10"] .card-container > .card > .card-back *{
+[data-section="1"] .card-container > .card > .card-back *{
     color: var(--second-2-color);
+    text-align: center;
 }
-[data-section="10"] .card-container > .card > * {
+[data-section="1"] .card-container > .card > * {
     padding: 0.5rem 0.5rem;
 }
-[data-section="10"] .card-container > .card > * > *{
-    margin-bottom: 0.5rem;
+[data-section="1"] .card-container > .card > * > *{
+    margin-bottom: 0rem;
 }
-[data-section="10"] .text-container{
-    height: 1rem;
+[data-section="1"] .text-container{
+    min-height: 1rem;
+    max-height: 3rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+[data-slide="1"] > .cortain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black-alpha-color);
+    z-index: 998;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 1s ease-in-out;
 }
+[data-slide="1"] > .cortain > .container-card{
+    position: absolute;
+    width: 100%;
+    margin-top: var(--header-height);
+    height:calc(100% - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card {
+    width: 95%;
+    height: 95%;
+    background-color: var(--first-2-color);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card *{
+    font-size: 1.3rem;
+    text-align: justify;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card .title-question{
+    text-align: center;
+    font-weight: 600;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card .options > .li-container{
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: background-color 0.5s ease-in-out;
+}
+.answer-verifying{
+    transition: background-color 0.3s ease-in-out !important;
+}
+.option-selected{
+    background-color: var(--second-color);
+}
+.option-selected *{
+    color: var(--first-color);
+}
+.correct-answer{
+    background-color: var(--green-color);
+}
+.correct-answer *{
+    color: var(--white-color) !important;
+}
+.wrong-answer{
+    background-color: var(--red-color);
+}
+.wrong-answer *{
+    color: var(--white-color) !important;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card .options .number{
+    margin-right: 20px;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card button{
+    margin-bottom: 0rem;
+    width: 80%;
+    height: 4.5rem;
+    border-radius: 20px;
+    font-size: 3rem;
+    text-align: center;
+    border-color: transparent;
+    background-color:var(--second-color);
+    color: var(--first-2-color);
+    transition: background-color 0.5s ease-in-out;
+}
+
+[data-slide="1"] > .cortain > .close-modal-card{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 15px;
+    min-width:var(--header-height);
+    height: calc( var(--header-height) + 5px);
+    background-color: var(--second-color);
+}
+[data-slide="1"] > .cortain > .close-modal-card svg{
+    width: 100%;
+    fill: var(--first-color);
+}
+
 .card{
     position: relative;
     cursor: pointer;
@@ -465,7 +545,7 @@ header *{
 .card.flip-effect{
     perspective: 10px;
     transform-style:preserve-3d;
-    transition:transform 1s ease-in-out ;
+    transition:transform 1s ease-in-out ,opacity 0.6s ease-in-out;
 }
 .card > .flip-cd{
    position: absolute;
@@ -473,8 +553,7 @@ header *{
    border-radius: 10px;
    width: 100%;
    height: 100%;
-   border: thick solid transparent;
-   transition: border-color 0.5s ease-in-out;
+   transition: border-color 0.5s ease-in-out , height 0.5s ease-in-out ;
    backface-visibility: hidden; /**back face visibility, cuando tenemos un elemento de interfaz de dos lados,
     va a determinar como se visualizan esas caras, visible es el defecto
     hidden, no tiene efecto en transformaciones de 2 dimensiones*/
@@ -483,9 +562,12 @@ header *{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    justify-content: space-between;
+    padding: 0rem;
+    transition:height 0.5s ease-in-out ;
 }
 .card *{
+    font-size: 1rem;
     text-align: justify; 
 }
 .card > * > *{
@@ -493,24 +575,85 @@ header *{
 }
 .card > .card-front{
     transform: rotateY(0deg);
+    
 }
 .card > .card-back{
     transform: rotateY(180deg);
     background-color:var(--main-blue) ;
 }
-.flip-effect[data-action="hover"]:hover{
+.flip-effect[data-action="hover"]:active{
     transform: rotateY(180deg);
 }
 .card > * > .img-container-card{
-    height: 80%;
+    height: calc(100% - 3rem);
     display: flex;
     align-items: center;
     justify-content: center;
 }
+.card > .cortain{
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 990;
+}
 .flip-effect-active{
     transform: rotateY(180deg);
 }
+@keyframes cardSelected {
+    0% {
+      transform: translateX(4%);
+    }
+    33%{
+        transform: translateX(-4%);
+    }
+    66% {
+        transform: translateX(4%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+.card-selected > .cortain{
+    animation:greenColor 0.5s;
+}
 
+.wrong-card{
+    animation:cardSelected 0.7s ease-in-out;
+}
+.wrong-card > .cortain{
+    animation:redColor .8s ;
+}
+@keyframes redColor {
+    0% {
+        opacity: 0;
+        background-color: var(--red-color);
+    }
+    50% {
+        opacity: 0.4;
+        background-color: var(--red-color);
+    }
+    100% {
+         opacity: 0;
+        background-color: var(--red-color);
+    }
+}
+@keyframes greenColor {
+    0% {
+        opacity: 0;
+        background-color: var(--green-color);
+    }
+    50% {
+        opacity: 0.5;
+        background-color: var(--green-color);
+    }
+    100% {
+         opacity: 0;
+        background-color: var(--green-color);
+    }
+  }
 /*Flechas*/
 .arrow{
     width: 10%;
@@ -526,10 +669,10 @@ header *{
     opacity: 0.5;
     fill: var(--second-alpha-color);
 }
-.arrow:hover{
+.arrow:active{
     cursor: pointer;
 }
-.arrow:hover > svg{
+.arrow:active > svg{
     opacity: 1;
     fill: var(--second-color);
 }
