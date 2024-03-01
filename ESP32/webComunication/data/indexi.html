@@ -2103,7 +2103,32 @@ const restartCards=function(){
     //$cardsObj=null;
     localStorage.removeItem("cards");
 }
-
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+const numerosAleatorios=function(inicio,final){ //arreglo[n]
+	let size=final-inicio;
+	let aleat;
+    const ref=[]
+	for(let i=0;i<size;i++){
+		aleat=inicio+getRandomInt(size);
+		let posiciones=0;
+		while(true){
+			for(let j=0;j<=i;j++){
+				if(ref[j]==aleat){
+					posiciones++;
+					aleat=inicio+getRandomInt(size);
+                }
+			}
+			if(posiciones==0)break;
+			else if(posiciones>0){
+				posiciones=0;
+			}
+		}
+		ref.push(aleat);
+	}
+    return ref
+}
 //funcion para agregar puntaje de jugadores
 
 

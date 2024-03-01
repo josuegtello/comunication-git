@@ -1833,7 +1833,7 @@ const handleOnMessage=function(event) {
     if(data.issue==="ROL_COMMUNICATION"){ //mandamos que somos un ESCLAVO
         //si nos pide que ROL DESEMPENIAMOS ESTMAMOS CONECTADOS.
         const callBackData={
-                issue:'SLAVE',
+                issue:'SLAVE_ROL',
         }
         //Le mando los datos al ESP32 con el usunto;
         connection.send(JSON.stringify(callBackData));

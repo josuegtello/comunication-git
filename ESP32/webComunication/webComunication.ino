@@ -4,7 +4,7 @@
 #include <SPIFFS.h>//libreria para guardar archivos en el ESP32
 #include <ArduinoJson.h>//Libreria para enviar y decodificar JSON
 #include <Ticker.h>
-#define Led 4
+//#define Led 4
 
 void enviarDatosSensor();//funcion dedicada a enviar datos al cliente
 
@@ -15,9 +15,6 @@ WebSocketsServer websockets(81); //puerto de comunicacion web-socket
 struct serverMasterSlave
 {
     int masterPortComunication; //no cambiante, se define una vez, el maestro va a ser la web Principal
-    int slavePortClient; //util cuando queramos mandarle un dato especifico a un cliente
-    String issue;
-    String jsonData;
 };
 serverMasterSlave webSocketData;
 
@@ -28,7 +25,6 @@ void notFound(AsyncWebServerRequest *request) //en caso de acceder a un lugar no
 
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length) { //funcion par gestionar los web-sockets
-
   switch (type){
     case WStype_DISCONNECTED: //en caso de que un cliente se desconecte
       Serial.printf("[%u] ¡Desconectado!\n", num);
@@ -52,8 +48,10 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
             websockets.broadcastTXT(JSON_Data);
             webSocketData.masterPortComunication=-2;//lo regresamos al valor original
         }
+        delay(5000);
     break;
     case WStype_CONNECTED: { //en caso de que ingrese un nuevo cliente
+
         IPAddress ip = websockets.remoteIP(num);
         Serial.printf("[%u] Conectado en %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
         //Imprimimos las caracteristicas de el numero de cliente conectado, su IP, LA URL DE VISITA
@@ -61,6 +59,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
     }
     break;
     case WStype_TEXT: //en caso de que el cliente nos envie datos
+        
         Serial.printf("[%u] Texto: %s\n", num, payload); //imprimimos que nos envios el cliente
         String mensaje = String((char*)( payload));//guardamos sus datos en un string
         //USE_SERIAL.printf("[%u] get Text: %s\n", num, payload);
@@ -75,10 +74,13 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
         //vemos de quien es el mensaje y la cabecera de este
         //analizamos aqui mismo
         String issue=doc["issue"];
+        Serial.print("El asunto es ");
+        Serial.println(issue);
+        Serial.print("El master esta en el puerto");
+        Serial.println(webSocketData.masterPortComunication);
         if(issue=="HELLO_WORLD"){ //primera conexion, le pedimos su rol 
             String JSON_Data = "{\"issue\":";//creamos nuestro JSON
-            JSON_Data +="\"ROL_COMMUNICATION\",";
-            JSON_Data += "\"}";
+            JSON_Data +="\"ROL_COMMUNICATION""\"}";
             Serial.println(JSON_Data);
             websockets.sendTXT(num, JSON_Data);
         }
@@ -92,7 +94,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
             websockets.sendTXT(num, JSON_Data);//le enviamos al esclavo su data, en que puerto se va a estar comunicando 
         }
         else if(issue=="MASTER_ROL"){//en caso de que sea un maestro;
-            Serial.print("Maestro encontrado ");
+            Serial.print("Maestro encontrado");
             Serial.println(num);
             webSocketData.masterPortComunication=num;//asignamos numero al puerto del maestro
         }
@@ -196,10 +198,9 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
 
 void setup(void)
 {
-    webSocketData.masterPortComunication=-1;
     Serial.begin(115200); //iniciamos monitor serial
-    pinMode(Led, OUTPUT); //definimos al led como salida
-    WiFi.softAP("Loteria","1111");//creamos nuestro access point
+    //pinMode(Led, OUTPUT); //definimos al led como salida
+    WiFi.softAP("RedLocal","geraEder");//creamos nuestro access point
     Serial.println("softAP");
     Serial.println("");
     Serial.println(WiFi.softAPIP()); //imprimimos su IP
@@ -207,25 +208,46 @@ void setup(void)
         Serial.println("A ocurrido un error al montar SPIFFS");
         return;
     }
-    server.on("/LoteriaNWS", HTTP_GET, [](AsyncWebServerRequest * request) {//en caso de una peticion HTTP a la raiz
-        request->send(SPIFFS, "/index3.html", "text/html"); //desplegamos nuestro sitio
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) //en caso de una peticion HTTP a la raiz
+    {
+        request->send(SPIFFS, "/index.html", "text/html"); //desplegamos nuestro sitio
     });
-    server.on("/Loteria", HTTP_GET, [](AsyncWebServerRequest * request) {//en caso de una peticion HTTP a la raiz
-        request->send(SPIFFS, "/index2.html", "text/html"); //desplegamos nuestro sitio
+    server.on("/pr/ws", HTTP_GET, [](AsyncWebServerRequest * request) //en caso de una peticion HTTP a la raiz
+    {
+        request->send(SPIFFS, "/indexi.html", "text/html"); //desplegamos nuestro sitio
     });
-    server.on("/PresentacionNWS", HTTP_GET, [](AsyncWebServerRequest * request){ //en caso de una peticion HTTP a la raiz
-        request->send(SPIFFS, "/index1.html", "text/html"); //desplegamos nuestro sitio
+    server.on("/pr/nws", HTTP_GET, [](AsyncWebServerRequest * request) //en caso de una peticion HTTP a la raiz
+    {
+        request->send(SPIFFS, "/indexii.html", "text/html"); //desplegamos nuestro sitio
     });
-    server.on("/Presentacion", HTTP_GET, [](AsyncWebServerRequest * request){ //en caso de una peticion HTTP a la raiz
-        request->send(SPIFFS, "/index0.html", "text/html"); //desplegamos nuestro sitio
+    server.on("/lot/ws", HTTP_GET, [](AsyncWebServerRequest * request)//en caso de una peticion HTTP a la raiz
+    {
+        request->send(SPIFFS, "/indexiii.html", "text/html"); //desplegamos nuestro sitio
+    });
+    server.on("/lot/nws", HTTP_GET, [](AsyncWebServerRequest * request) //en caso de una peticion HTTP a la raiz
+    {
+        request->send(SPIFFS, "/indexiv.html", "text/html"); //desplegamos nuestro sitio
     });
     server.onNotFound(notFound);
     server.begin();//iniciamos el servidor
     websockets.begin();//iniciamos el servidor web-socket
     websockets.onEvent(webSocketEvent);//en caso de algun evento web-socket irnos a esta funcion
-    //timer.attach(2,enviarDatosSensor); // Ticker timer (Llama funciones en un intervalo establecido), en este caso 2 seg
+    timer.attach(1,enviarDatosSensor); // Ticker timer (Llama funciones en un intervalo establecido), en este caso 2 seg
+    webSocketData.masterPortComunication=-1;
 }
 
 void loop(void) {
     websockets.loop(); //escuchamos eventos websockets
+}
+void enviarDatosSensor(){
+  //Serial.println(analogRead(UPIITUFO.batteryPin));
+  //ESPdata.level=map(analogRead(UPIITUFO.batteryPin),0,150,0,100);//leemos el dato del nivel de bateria  
+  String JSON_Data = "{\"batteryLevel\":";//creamos nuestro JSON
+         JSON_Data += 1;
+         JSON_Data += ",\"message\":\"";
+         JSON_Data += 2;
+         JSON_Data += "\"}";
+  Serial.println(JSON_Data);
+  //websockets.broadcastTXT(JSON_Data);  // envia datos a todos los clientes conectados en formato JSON
+  //ESPdata.message="";//volvemos a limpiar el mensaje
 }

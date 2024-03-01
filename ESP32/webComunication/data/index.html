@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+    /*definicion de colores, usualmente ocupar nombres relacionados*/
+    --first-color:#171717; /*1*/
+    --first-1-color:#101010; /*2*/
+    --first-2-color:#292929; /*3*/
+    --first-alpha-color:#171717c8; /*4*/
+    --first-hover-alpha-color:#171717c8; /*5*/
+    --second-color:#d6d0d0; /*6*/
+    --second-hover-color:#d6d0d0; /*7*/
+    --second-1-color:#aea7a7; /*8*/
+    --second-2-color:#f1f1f1; /*9*/
+    --second-alpha-color:#d6d0d0cb; /*10*/
+    --second-hover-alpha-color:#d6d0d0cb; /*11*/
+    --main-blue-dark: #004697; /*12*/
+	--main-blue: #3496ff; /*13*/
+	--main-blue-light: #8bbdf2; /*14*/
+	--main-pink-dark: #e71484; /*15*/
+	--main-pink: #ff1493; /*16*/
+	--main-pink-light: #ffb6c1; /*17*/
+	--main-purple-dark: #4d3dff; /*18*/
+	--main-purple: #c2bcff; /*19*/
+	--main-purple-light: #bdb7ff; /*20*/
+    --link-color:#d6d0d0; /*21*/
+    --text-color:#d6d0d0; /*22*/
+    --title-color:#e2e0e0;
+    --white-color:#FFF;
+    --white-alpha-color:#ffffff80;
+    --black-color:#000;
+    --black-alpha-color:rgba(0,0,0,0.5);
+    /*Definicion de tipografias
+    --main-purple-dark: #4d3dffcd;
+    --white-alpha-color:#ffffffca;
+    */
+    --font:sans-serif;
+    /*alto de la cabecera*/
+    --header-height:3.5rem;
+}
+/*********Reseto CSS*********/
+/*reseteado de modelo de caja*/
+html {
+    box-sizing: border-box;
+    font-family:var(--font);
+    font-size:16px;/*definir explicitamente lo que va a equivaler 1rem*/
+    scroll-behavior: smooth;/*efecto de animacion del scroll*/
+}
+*,*::after,*::before{
+    box-sizing: inherit;    
+}
+body {
+    margin:0;
+    color:var(--text-color);
+    background-color: var(--first-color);
+}
+/*enlaces*/
+a {
+    color:var(--link-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+svg {
+    fill: var(--link-color);
+    min-height: 100%;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+}
+/*tamaños de tipografias en rems, 
+recomendable editar el margin para que despues podamos agregarlo explicitamente*/
+h1  {
+    margin:0;
+    font-size:4rem;
+}
+h2 {
+    margin:0;
+    font-size:2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+h3 {
+    margin:0;
+    font-size:1.25rem;
+}
+h4 {
+    margin:0;
+    font-size:1rem;
+}
+h5 {
+    margin:0;
+    font-size:.85rem;
+}
+h6 {
+    margin:0;
+    font-size:.7rem;
+}
+img, video, audio {
+    max-width:100%;
+    height:auto;
+}
+p { /*altura de la linea sea de 1.6, 
+    tiene que ver un poco con el tamaño de la letra, como un interlineado*/
+    line-height: 1;
+    margin: 0;
+    font-size: 1.8rem;
+}
+/*SCROLLBAR*/
+::-webkit-scrollbar{
+    width: 1rem;
+    z-index: -1;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--second-alpha-color);
+    border-radius: 100vw;
+    
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--second-hover-color);
+    
+}
+        h1{
+            text-align: center;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container > button{
+            width: 50%;
+            height: 5rem;
+            font-size: 2rem;
+            border-radius: 20px;
+            background-color: var(--second-color);
+            color: var(--first-color);
+        }
+        @media only screen and (max-width: 600px) {
+            .container > button{
+                width: 80%;
+                height: 7rem;
+                font-size: 2rem;
+            }
+        }
+        .container > button.disble{
+            display: none !important;
+            opacity: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Menu del Servidor</h1>
+        <button class="disable" style="display: none;" onclick="window.location='http://'+location.hostname+'/pr/ws'">Presentacion WS</button>
+        <button onclick="window.location='http://'+location.hostname+'/pr/nws'">Presentacion sin WS</button>
+        <button class="disable" style="display: none;" onclick="window.location='http://'+location.hostname+'/lot/ws'">Loteria WS</button>
+        <button onclick="window.location='http://'+location.hostname+'/lot/nws'">Loteria sin WS</button>
+    </div>
+    
+    
+</body>
+</html>
