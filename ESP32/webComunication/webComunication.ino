@@ -33,33 +33,31 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
     case WStype_DISCONNECTED: //en caso de que un cliente se desconecte
       Serial.printf("[%u] ¡Desconectado!\n", num);
         //le mandamos al master que se ha desconectado el usuario de tal puerto
-        if(webSocketData.masterPortComunication!=num){//si no es el master
-            if(webSocketData.masterPortComunication!=-1){//el maestro ya esta registrado, le enviamos data
-                String JSON_Data = "{\"issue\":";//creamos nuestro JSON
-                JSON_Data +="\"LOST_SLAVE_CONNECTION\",";
-                JSON_Data = "\"port\":";
-
-                JSON_Data += "\"}";
-                websockets.sendTXT(num, JSON_Data);
-            }
+        if((webSocketData.masterPortComunication!=-1)&&(webSocketData.masterPortComunication!=num)){//si no es el master
+            String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+            JSON_Data +="\"LOST_SLAVE_CONNECTION\",";
+            JSON_Data += "\"port\":";
+            JSON_Data += num;  //le mandamos que puerto fue el que perdio comunicacion
+            JSON_Data += "\"}";
+            Serial.println(JSON_Data);
+            websockets.sendTXT(webSocketData.masterPortComunication, JSON_Data); //se lo mandamos al master
         }
         else{//si es el masster
             String JSON_Data = "{\"issue\":";//creamos nuestro JSON
             JSON_Data +="\"LOST_MASTER_CONNECTION\",";
-            JSON_Data = "\"port\":";
-            JSON_Data += num;        
+            JSON_Data += "\"port\":";
+            JSON_Data += "\"null\"";        
             JSON_Data += "\"}";
+            Serial.println(JSON_Data);
             websockets.broadcastTXT(JSON_Data);
+            webSocketData.masterPortComunication=-2;//lo regresamos al valor original
         }
-        
-
-
     break;
     case WStype_CONNECTED: { //en caso de que ingrese un nuevo cliente
         IPAddress ip = websockets.remoteIP(num);
-
         Serial.printf("[%u] Conectado en %d.%d.%d.%d url: %s\n", num, ip[0], ip[1], ip[2], ip[3], payload);
         //Imprimimos las caracteristicas de el numero de cliente conectado, su IP, LA URL DE VISITA
+
     }
     break;
     case WStype_TEXT: //en caso de que el cliente nos envie datos
@@ -75,36 +73,130 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
           return;
         }
         //vemos de quien es el mensaje y la cabecera de este
-        sendData(doc);
         //analizamos aqui mismo
         String issue=doc["issue"];
         if(issue=="HELLO_WORLD"){ //primera conexion, le pedimos su rol 
             String JSON_Data = "{\"issue\":";//creamos nuestro JSON
             JSON_Data +="\"ROL_COMMUNICATION\",";
             JSON_Data += "\"}";
+            Serial.println(JSON_Data);
             websockets.sendTXT(num, JSON_Data);
         }
         else if(issue=="SLAVE_ROL"){//es un esclavo'
             String JSON_Data = "{\"issue\":";
             JSON_Data +="\"PORT_COMMUNICATION\",";
-            JSON_Data = "\"port\":";
-            JSON_Data += num;        
+            JSON_Data += "\"port\":";
+            JSON_Data += num;     
             JSON_Data += "\"}";
+            Serial.println(JSON_Data);
             websockets.sendTXT(num, JSON_Data);//le enviamos al esclavo su data, en que puerto se va a estar comunicando 
         }
         else if(issue=="MASTER_ROL"){//en caso de que sea un maestro;
+            Serial.print("Maestro encontrado ");
+            Serial.println(num);
             webSocketData.masterPortComunication=num;//asignamos numero al puerto del maestro
         }
-
-        //int estadoLed = doc["Led"]; // vemos el valor que tiene la propiedad led,el estado será de 0 o 1 y se la asignamos a una variable
-        //digitalWrite(Led,estadoLed);//Dependiendo de su valor ejecutamos
-        
+        else if(issue=="UPDATE_USER"){//el esclavo nos mando data
+            if(webSocketData.masterPortComunication==-1){//el maestro no esta conectado, le decimos al slave la situacion
+                String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data +="\"MASTER_DONT_HAVE_CONNECTION_YET\"";
+                JSON_Data += "\"}";
+                Serial.println(JSON_Data);
+                websockets.sendTXT(num, JSON_Data);
+            }
+            else if(webSocketData.masterPortComunication==-2){//se desconecto
+                String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data +="\"LOST_MASTER_CONNECTION\",";
+                JSON_Data += "\"port\":";
+                JSON_Data += "\"null\"";        
+                JSON_Data += "\"}";
+                Serial.println(JSON_Data);
+                websockets.sendTXT(num, JSON_Data);
+            }
+            else{//el maestro esta conectado le mandamos toda la data tal cual
+                String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data += "\"UPDATE_USER\",";
+                JSON_Data += "\"port\":\",";
+                JSON_Data += num;
+                JSON_Data += "\"playerName\":\",";
+                String name=doc["playerName"];
+                JSON_Data += name;
+                JSON_Data += "\"}";
+                Serial.println(JSON_Data);
+                websockets.sendTXT(webSocketData.masterPortComunication, JSON_Data);
+            }
+        }
+        else if(issue=="UPDATE_SCORE"){
+            //el primero es logicamente imposible, no podemos ni acceder a las tarjetas
+            if(webSocketData.masterPortComunication==-1){//el maestro no esta conectado, le decimos al slave la situacion
+                String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data +="\"MASTER_DONT_HAVE_CONNECTION_YET\",";
+                JSON_Data += "\"}";
+                Serial.println(JSON_Data);
+                websockets.sendTXT(num, JSON_Data);
+            }
+            else if(webSocketData.masterPortComunication==-2){//se desconecto
+                String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data +="\"LOST_MASTER_CONNECTION\",";
+                JSON_Data += "\"port\":";
+                JSON_Data += "\"null\"";        
+                JSON_Data += "\"}";
+                Serial.println(JSON_Data);
+                websockets.sendTXT(num, JSON_Data);
+            }
+            else{//el maestro esta conectado le mandamos toda la data tal cual
+                String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data += "\"UPDATE_USER\",";
+                JSON_Data += "\"port\":\",";
+                JSON_Data += num;
+                JSON_Data += "\"score\":\",";
+                int score=doc["score"];
+                JSON_Data += score;
+                JSON_Data += "\"}";
+                Serial.println(JSON_Data);
+                websockets.sendTXT(webSocketData.masterPortComunication, JSON_Data);
+            }
+        }
+        else if(issue=="ACTUAL_VIEW"){ //le enviamos a todos los dispositivos que pantalla se visualiza en ese momento
+            String JSON_Data = "{\"issue\":";
+            JSON_Data +="\"ACTUAL_VIEW\",";
+            JSON_Data += "\"actualView\":";
+            int actual= doc["actualView"];
+            JSON_Data += actual;     
+            JSON_Data += "\"}";
+            Serial.println(JSON_Data);
+            websockets.broadcastTXT(JSON_Data);
+        }
+        else if(issue=="WINNER"){//Alguien ya acabo el juego
+            String JSON_Data = "{\"issue\":";
+            JSON_Data +="\"WINNER\",";
+            JSON_Data += "\"port\":";
+            JSON_Data += num;     
+            JSON_Data += "\"}";
+            Serial.println(JSON_Data);
+            websockets.sendTXT(webSocketData.masterPortComunication, JSON_Data);
+        }
+        else if(issue=="DELETE_PLAYER"){
+            String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data +="\"PLAYER_DELETED\",";
+                JSON_Data += "\"}";
+            int numPlayer=doc["numPlayer"];
+            Serial.println(JSON_Data);
+            websockets.sendTXT(numPlayer, JSON_Data);
+        }
+        else if(issue=="RESTART_GAME"){
+            String JSON_Data = "{\"issue\":";//creamos nuestro JSON
+                JSON_Data +="\"RESTART_GAME\",";
+                JSON_Data += "\"}";
+            websockets.broadcastTXT(JSON_Data);
+        }
     break;
   }
 }
 
 void setup(void)
 {
+    webSocketData.masterPortComunication=-1;
     Serial.begin(115200); //iniciamos monitor serial
     pinMode(Led, OUTPUT); //definimos al led como salida
     WiFi.softAP("Loteria","1111");//creamos nuestro access point
@@ -115,8 +207,13 @@ void setup(void)
         Serial.println("A ocurrido un error al montar SPIFFS");
         return;
     }
-
+    server.on("/LoteriaNWS", HTTP_GET, [](AsyncWebServerRequest * request) {//en caso de una peticion HTTP a la raiz
+        request->send(SPIFFS, "/index3.html", "text/html"); //desplegamos nuestro sitio
+    });
     server.on("/Loteria", HTTP_GET, [](AsyncWebServerRequest * request) {//en caso de una peticion HTTP a la raiz
+        request->send(SPIFFS, "/index2.html", "text/html"); //desplegamos nuestro sitio
+    });
+    server.on("/PresentacionNWS", HTTP_GET, [](AsyncWebServerRequest * request){ //en caso de una peticion HTTP a la raiz
         request->send(SPIFFS, "/index1.html", "text/html"); //desplegamos nuestro sitio
     });
     server.on("/Presentacion", HTTP_GET, [](AsyncWebServerRequest * request){ //en caso de una peticion HTTP a la raiz
@@ -126,21 +223,9 @@ void setup(void)
     server.begin();//iniciamos el servidor
     websockets.begin();//iniciamos el servidor web-socket
     websockets.onEvent(webSocketEvent);//en caso de algun evento web-socket irnos a esta funcion
-    timer.attach(2,enviarDatosSensor); // Ticker timer (Llama funciones en un intervalo establecido), en este caso 2 seg
+    //timer.attach(2,enviarDatosSensor); // Ticker timer (Llama funciones en un intervalo establecido), en este caso 2 seg
 }
 
 void loop(void) {
     websockets.loop(); //escuchamos eventos websockets
-}
-
-void sendData(DynamicJsonDocument doc) {
-    
-    int num;
-    String JSON_Data ="";
-    Serial.println(JSON_Data);
-    websockets.broadcastTXT(JSON_Data);  // envia datos a todos los clientes conectados en formato JSON
-    // send message to client
-    websockets.sendTXT(num, "message here");
-
-    
 }

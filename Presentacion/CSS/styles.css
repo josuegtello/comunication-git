@@ -312,9 +312,7 @@ header *{
     min-height: calc(100% - var(--header-height));
 }
 
-
-
-
+/*GENERICOS*/
 
 /*****************SECCION 1*******************/
 
@@ -507,15 +505,18 @@ header *{
 }
 [data-section="10"] .card-container > .card > .card-front *{
     color: var(--first-2-color);
+    font-size: 2rem;
+    text-align: center;
 }
 [data-section="10"] .card-container > .card > .card-back{
     background-color: var(--first-2-color);
 }
 [data-section="10"] .card-container > .card > .card-back *{
     color: var(--second-2-color);
+    font-size: 1.6rem;
 }
 [data-section="10"] .card-container > .card > * {
-    padding: 3rem 1rem;
+    padding: 2rem 0.8rem;
 }
 [data-section="10"] .card-container > .card > * > *{
     margin-bottom: 1rem;
@@ -607,7 +608,31 @@ header *{
 /*****************BIBLIOGRAFY*******************/
 
 
+/*WARNING*/
+.warning-container{
+    position: fixed;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--main-blue-light);
+    min-height: 7rem;
+    max-height: 10rem;
+    padding: 1rem 2rem;
+    transform: translateY(100%);
+    transition: transform 1s ease-in-out;
+}
+.warning-container p{
+    font-size: 4.5rem;
+    color: var(--white-color);
 
+    text-align: justify;
+    width: 100%;
+}
 
 /*GENERIC*/
 .opacity-1{

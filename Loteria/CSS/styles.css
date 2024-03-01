@@ -691,6 +691,7 @@ header *{
     min-height: 3rem;
     max-height: 8rem;
     padding: 1rem 2rem;
+    transform: translateY(100%);
     transition: transform 1s ease-in-out;
 }
 [data-section="1"] .warning-container p{

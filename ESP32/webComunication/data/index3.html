@@ -1,4 +1,1026 @@
-const $body=document.body,
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Competencias Comunicativas</title>
+    <style>
+        /*Division en la que john mircha trabaja*/
+/*despues de custom properties y reseteo empezar con la cabecera*/
+/*******Custom Properties*******/
+:root {
+    /*definicion de colores, usualmente ocupar nombres relacionados*/
+    --first-color:#171717; /*1*/
+    --first-1-color:#101010; /*2*/
+    --first-2-color:#292929; /*3*/
+    --first-alpha-color:#171717c8; /*4*/
+    --first-hover-alpha-color:#171717c8; /*5*/
+    --second-color:#d6d0d0; /*6*/
+    --second-hover-color:#d6d0d0; /*7*/
+    --second-1-color:#aea7a7; /*8*/
+    --second-2-color:#f1f1f1; /*9*/
+    --second-alpha-color:#d6d0d0cb; /*10*/
+    --second-hover-alpha-color:#d6d0d0cb; /*11*/
+    --main-blue-dark: #004697; /*12*/
+	--main-blue: #3496ff; /*13*/
+	--main-blue-light: #8bbdf2; /*14*/
+	--main-pink-dark: #e71484; /*15*/
+	--main-pink: #ff1493; /*16*/
+	--main-pink-light: #ffb6c1; /*17*/
+	--main-purple-dark: #4d3dff; /*18*/
+	--main-purple: #c2bcff; /*19*/
+	--main-purple-light: #bdb7ff; /*20*/
+    --link-color:#d6d0d0; /*21*/
+    --text-color:#d6d0d0; /*22*/
+    --title-color:#e2e0e0;
+    --white-color:#FFF;
+    --white-alpha-color:#ffffff80;
+    --white-alpha-2-color:#ffffffd8;
+    --black-color:#000;
+    --black-alpha-color:rgba(0,0,0,0.5);
+    --green-color:green;
+    --red-color:red;
+    /*Definicion de tipografias
+    --main-purple-dark: #4d3dffcd;
+    --white-alpha-color:#ffffffca;
+    */
+    --font:sans-serif;
+    /*alto de la cabecera*/
+    --header-height:3rem;
+}
+/*********Reseto CSS*********/
+/*reseteado de modelo de caja*/
+html {
+    box-sizing: border-box;
+    font-family:var(--font);
+    font-size:16px;/*definir explicitamente lo que va a equivaler 1rem*/
+    scroll-behavior: smooth;/*efecto de animacion del scroll*/
+}
+*,*::after,*::before{
+    box-sizing: inherit;    
+}
+body {
+    margin:0;
+    color:var(--text-color);
+    background-color: var(--first-color);
+}
+/*enlaces*/
+a {
+    color:var(--link-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+svg {
+    fill: var(--link-color);
+    min-height: 100%;
+    pointer-events: none;
+    transition: all 0.5s ease-out;
+}
+/*tamaños de tipografias en rems, 
+recomendable editar el margin para que despues podamos agregarlo explicitamente*/
+h1  {
+    margin:0;
+    font-size:4rem;
+}
+h2 {
+    margin:0;
+    font-size:2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+h3 {
+    margin:0;
+    font-size:1.25rem;
+}
+h4 {
+    margin:0;
+    font-size:1rem;
+}
+h5 {
+    margin:0;
+    font-size:.85rem;
+}
+h6 {
+    margin:0;
+    font-size:.7rem;
+}
+img, video, audio {
+    max-width:100%;
+    height:auto;
+}
+p { /*altura de la linea sea de 1.6, 
+    tiene que ver un poco con el tamaño de la letra, como un interlineado*/
+    line-height: 1;
+    margin: 0;
+    font-size: 1.3rem;
+}
+/*SCROLLBAR*/
+::-webkit-scrollbar{
+    width: 1rem;
+    z-index: -1;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--second-alpha-color);
+    border-radius: 100vw;
+    
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--second-hover-color);
+    
+}
+/***************************ESTILOS POR DEFECTOS*********************************/
+/*MENU*/
+.container-animation{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column; 
+    z-index: 999;
+}
+.bar-animaton{
+    width: 100%;
+    height: calc(100% /6);
+    background-color: var(--link-color);
+    transition: transform 1s ease-in-out,background-color .5s ease-in-out;
+}
+.button-container{
+    position: absolute;
+    width: 90%;
+    height: 50%;
+    top: 25%;
+    left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-in-out;
+}
+.button-container > p{
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--first-color);
+    transition: opacity 0.5s ease-in-out;
+}
+.button-container > button:hover{
+    cursor: pointer;
+    background-color: var(--first-1-color);
+}
+/*HEADER*/
+.header-container {
+    z-index: 998;
+    height: var(--header-height);
+    position: fixed;
+    width: calc(100% - 1rem);
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: transform 3s ease-in-out;
+}
+header {
+    height: var(--header-height);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    background-size: 300%;
+    background-position: left;
+    transition: background-position 1s;
+}
+header *{
+    font-size: 1.3rem;
+}
+.username-container{
+    width: calc(90% - 12ex);
+    height: 80%;
+    padding: 0;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.username-container > input{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 20px;
+    padding-left: 1rem;
+    background-color: var(--white-alpha-color);
+    border-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+}
+.username-container > input::placeholder{
+    color: var(--black-alpha-color);
+}
+.username-container > input:focus{
+    border-color: transparent;
+    background-color: var(--white-alpha-2-color);
+    outline-color: transparent;
+    border-width: 0;
+    outline-width: 0px;
+}
+.topic{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: width 0.5s ease-in-out,padding 0.5s ease-in-out;
+}
+.topic > p{
+    line-height: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    margin: 0;
+    color: var(--link-color);
+}
+.nav-mobile{
+    pointer-events: none;
+    position: fixed;
+    transform: translateX(-100%);
+}
+.nav{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+.nav > div{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.nav > a{
+    padding: 0 .5rem;
+    height: 100%;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+} 
+.nav > a p{
+    margin: 0;
+    margin-top: 1px;
+    padding: 0;
+    text-align: center;
+    line-height:1;
+    pointer-events: none;
+}
+
+.nav > a:active{
+    background-color: var(--second-hover-alpha-color);
+    color: var(--first-hover-alpha-color);
+}
+.nav > a:active svg{
+    fill: var(--first-alpha-color) !important;
+}
+
+
+/*CONTENEDORES Y CUERPO*/
+.slides {
+    width: 100%;
+    background-color: var(--first-color);
+    height: 100lvh;
+    scroll-snap-type:block proximity ;/*recibe dos valores, el primero es el eje que quiero controlar
+                        (x | y | inline | block| both), para el desplazamiento en x ponemos 
+                        la palabra x o inline, para el desplazamiento en y puede ser y o block, 
+                        el segundo es si quieres que sea un movimiento mandatorio(efecto mandatory)
+                        el otro es proximity tiene que estar mas hacia la otra diapositiva */
+}
+
+.slide{
+    width: 100%;
+    height: 100dvh;
+    scroll-snap-align:center ;/*hacia donde se van a alinear, end (final) | start (inicio) | center*/
+    transition: height 0.5s ease-in-out ;
+}
+.slide-container{
+    position: relative;
+    width: 100%;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.slide .carousel[data-direction="row"]{
+    flex-direction: row;
+}
+.slide .carousel[data-direction="column"]{
+    flex-direction: column;
+}
+
+.slide .carousel[data-direction="row"][data-start="end"]{
+    flex-direction: row-reverse;
+}
+.slide [data-direction="column"][data-start="end"]{
+    flex-direction: column-reverse;
+}
+.slide-container .content{
+    min-width:100% ;
+    height: calc(100% - var(--header-height));
+    margin-top: var(--header-height);
+    padding:0.5rem;
+}
+.content > h2{
+    width: 100%;
+    text-align: center;
+}
+.carousel{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 1s ease-in-out;
+    
+}
+.slide .carousel[data-direction="column"] .content{
+    min-height: calc(100% - var(--header-height));
+}
+
+
+
+
+
+/*****************SECCION 1*******************/
+
+
+/*****************SECCION 2*******************/
+
+
+/*****************SECCION 3*******************/
+
+
+/*****************SECCION 4*******************/
+
+
+/*****************SECCION 5*******************/
+
+
+/*****************SECCION 6*******************/
+
+
+/*****************SECCION 7*******************/
+
+
+/*****************SECCION 8*******************/
+
+
+/*****************REGLAS*******************/
+
+/*****************LOTERY*******************/
+[data-section="1"] .content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+[data-section="1"] .cards-container{
+    width:100%;
+    height: 100%;
+    overflow: hidden;
+}
+[data-section="1"] .cards{
+    min-width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 33%); /*recibe dos parámetros, el numero de elementos que quiero*/
+    grid-template-rows: repeat(3,33%);
+
+    transition: transform 1s ease-in-out;
+}
+[data-section="1"] .cards > .card-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+[data-section="1"] .card-container > .card{
+    width: 95%;
+    height: 95%;
+}
+[data-section="1"] .card-container > .card > .card-front{
+    background-color: var(--second-2-color);
+}
+[data-section="1"] .card-container > .card > .card-front svg{
+    fill: var(--first-2-color);
+    width: 100%;
+}
+[data-section="1"] .card-container > .card > .card-front *{
+    color: var(--first-2-color);
+    text-align: center;
+}
+[data-section="1"] .card-container > .card > .card-back{
+    background-color: var(--first-color);
+    justify-content: center;
+    align-items: center;
+}
+[data-section="1"] .card-container > .card > .card-back *{
+    color: var(--second-2-color);
+    text-align: center;
+}
+[data-section="1"] .card-container > .card > * {
+    padding: 0.5rem 0.5rem;
+}
+[data-section="1"] .card-container > .card > * > *{
+    margin-bottom: 0rem;
+}
+[data-section="1"] .text-container{
+    min-height: 1rem;
+    max-height: 3rem;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+[data-slide="1"] > .cortain{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black-alpha-color);
+    z-index: 998;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease-in-out;
+}
+[data-slide="1"] > .cortain > .container-card{
+    position: absolute;
+    width: 100%;
+    margin-top: var(--header-height);
+    height:calc(100% - var(--header-height));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card {
+    width: 95%;
+    height: 95%;
+    background-color: var(--first-2-color);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1rem 2rem;
+
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card *{
+    font-size: 1.3rem;
+    text-align: justify;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card .title-question{
+    text-align: center;
+    font-weight: 600;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card .options > .li-container{
+    padding: 0.5rem 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: background-color 0.5s ease-in-out;
+}
+.answer-verifying{
+    transition: background-color 0.3s ease-in-out !important;
+}
+.option-selected{
+    background-color: var(--second-color);
+}
+.option-selected *{
+    color: var(--first-color);
+}
+.correct-answer{
+    background-color: var(--green-color);
+}
+.correct-answer *{
+    color: var(--white-color) !important;
+}
+.wrong-answer{
+    background-color: var(--red-color);
+}
+.wrong-answer *{
+    color: var(--white-color) !important;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card .options .number{
+    margin-right: 20px;
+}
+[data-slide="1"] > .cortain > .container-card > .questions-card button{
+    margin-bottom: 0rem;
+    width: 80%;
+    height: 4.5rem;
+    border-radius: 20px;
+    font-size: 3rem;
+    text-align: center;
+    border-color: transparent;
+    background-color:var(--second-color);
+    color: var(--first-2-color);
+    transition: background-color 0.5s ease-in-out;
+}
+
+[data-slide="1"] > .cortain > .close-modal-card{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border-radius: 15px;
+    min-width:var(--header-height);
+    height: calc( var(--header-height) + 5px);
+    background-color: var(--second-color);
+}
+[data-slide="1"] > .cortain > .close-modal-card svg{
+    width: 100%;
+    fill: var(--first-color);
+}
+
+.card{
+    position: relative;
+    cursor: pointer;
+}
+.card.flip-effect{
+    perspective: 10px;
+    transform-style:preserve-3d;
+    transition:transform 1s ease-in-out ,opacity 0.6s ease-in-out;
+}
+.card > .flip-cd{
+   position: absolute;
+   overflow: hidden;
+   border-radius: 10px;
+   width: 100%;
+   height: 100%;
+   transition: border-color 0.5s ease-in-out , height 0.5s ease-in-out ;
+   backface-visibility: hidden; /**back face visibility, cuando tenemos un elemento de interfaz de dos lados,
+    va a determinar como se visualizan esas caras, visible es el defecto
+    hidden, no tiene efecto en transformaciones de 2 dimensiones*/
+}
+.card > *{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem;
+    transition:height 0.5s ease-in-out ;
+}
+.card *{
+    font-size: 1rem;
+    text-align: justify; 
+}
+.card > * > *{
+    width: 90%;
+}
+.card > .card-front{
+    transform: rotateY(0deg);
+    
+}
+.card > .card-back{
+    transform: rotateY(180deg);
+    background-color:var(--main-blue) ;
+}
+.flip-effect[data-action="hover"]:active{
+    transform: rotateY(180deg);
+}
+.card > * > .img-container-card{
+    height: calc(100% - 3rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card > .cortain{
+    position: absolute;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 990;
+}
+.flip-effect-active{
+    transform: rotateY(180deg);
+}
+@keyframes cardSelected {
+    0% {
+      transform: translateX(4%);
+    }
+    33%{
+        transform: translateX(-4%);
+    }
+    66% {
+        transform: translateX(4%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+.card-selected > .cortain{
+    animation:greenColor 0.5s;
+}
+
+.wrong-card{
+    animation:cardSelected 0.7s ease-in-out;
+}
+.wrong-card > .cortain{
+    animation:redColor .8s ;
+}
+@keyframes redColor {
+    0% {
+        opacity: 0;
+        background-color: var(--red-color);
+    }
+    50% {
+        opacity: 0.4;
+        background-color: var(--red-color);
+    }
+    100% {
+         opacity: 0;
+        background-color: var(--red-color);
+    }
+}
+@keyframes greenColor {
+    0% {
+        opacity: 0;
+        background-color: var(--green-color);
+    }
+    50% {
+        opacity: 0.5;
+        background-color: var(--green-color);
+    }
+    100% {
+         opacity: 0;
+        background-color: var(--green-color);
+    }
+  }
+/*Flechas*/
+.arrow{
+    width: 10%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-in-out;
+}
+.arrow > svg{
+    height: 100%;
+    width: 100%;
+    opacity: 0.5;
+    fill: var(--second-alpha-color);
+}
+.arrow:active{
+    cursor: pointer;
+}
+.arrow:active > svg{
+    opacity: 1;
+    fill: var(--second-color);
+}
+[data-section="1"] .warning-container{
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--main-blue-light);
+    min-height: 3rem;
+    max-height: 8rem;
+    padding: 1rem 2rem;
+    transform: translateY(100%);
+    transition: transform 1s ease-in-out;
+}
+[data-section="1"] .warning-container p{
+    font-size: 1.5rem;
+    color: var(--white-color);
+
+    text-align: justify;
+    width: 100%;
+}
+
+
+/*****************BIBLIOGRAFY*******************/
+
+
+
+
+/*GENERIC*/
+.opacity-1{
+    opacity: 1;
+}
+.opacity-0{
+    opacity: 0;
+}
+.display-none{
+    display: none;
+}
+.pointer-events-none{
+    pointer-events: none;
+}
+.visibility-hidden{
+    visibility: hidden;
+}
+
+
+
+
+
+.txtC-blue-dark{
+    color: var(--main-blue-dark);
+}
+.bgC-bd{
+    background-color: var(--main-blue-dark);
+}
+.bC-bd{
+    border-color:var(--main-blue-dark);
+}
+
+
+.bW-th{
+    border-width: thin;
+}
+.bW-md{
+    border-width: medium;
+}
+.bW-tk{
+    border-width: thick;
+}
+
+    </style>
+</head>
+<body>
+   <main class="slides">
+        <div class="container-animation" data-state="CLOSE">
+            <div class="bar-animaton"></div>
+            <div class="bar-animaton"></div>
+            <div class="bar-animaton"></div>
+            <div class="bar-animaton"></div>
+            <div class="bar-animaton"></div>
+            <div class="bar-animaton"></div>
+            <div class="button-container opacity-0">
+                <p class="">Hola Mundo</p>
+            </div>
+        </div>
+        <div class="header-container">
+            <header>
+                <div class="username-container">
+                    <input type="text" placeholder="Usuario">
+                </div>
+                <div class="topic">
+                    <p>Lotería</p>
+                </div>
+                <nav class="nav">
+                    <a class="lg-dk-mode" data-state="DARK" data-menu-option="1" data-icon="LIGHT-MODE">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="38" viewBox="0 -960 960 960" width="38">
+                            <path d="M480-280q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Z"/>
+                        </svg>
+                    </a>
+                </nav>
+            </header>
+        </div>
+        <section class="section slide" data-section="1" data-topic="Lotería">
+            <div class="slide-container">
+                <article class="content carousel" data-slide="1" data-content="null">
+                        <div class="cards-container">
+                            <div class="cards" data-content="0">
+                                <div class="card-container" >
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="1">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-closed-fill" viewBox="0 0 16 16">
+                                                    <path d="M12 1a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2a1 1 0 0 1 1-1h8zm-2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                                  </svg>
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta Larga de n caracteres</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="2">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 2</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="3">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 3</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="4">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 4</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="5">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 5</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="6">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 6</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="7">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 7</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="8">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 8</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            <div class="question">
+                                                <p>Pregunta</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-container">
+                                    <div class="card flip-effect" data-tries="0" data-click="0" data-action="click" data-num-card="" data-card="9">
+                                        <div class="cortain"></div>
+                                        <div class="flip-cd card-front">
+                                            <div class="img-container-card">
+
+                                            </div>
+                                            <div class="text-container">
+                                                <p>Tarjeta 9</p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-cd card-back">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cortain pointer-events-none opacity-0">
+                            <div class="container-card">
+                                <div class="questions-card">
+                                    <div class="title-question">
+                                        Titulo de el subtema
+                                    </div>
+                                    <div class="container-question">
+                                        <div class="question">
+                                            <p>Se enfoca en el plano del discurso o texto, involucrando procedimientos con normas inherentes. 
+                                                Las normas se manifiestan cuando el hablante asigna juicios de apropiación según el contexto y la situación concreta. <br>
+                                                Pertenece a la competencia.
+                                                </p>
+                                        </div>
+                                        <div class="options">
+                                            
+                                            <div class="li-container" data-num-option="">
+                                               <div class="number">
+                                                    <i>a)</i>
+                                                </div>
+                                                <div class="text">
+                                                    Competencia Textual (Nivel del Sentido)
+                                                </div>
+                                            </div>
+                                            <div class="li-container" data-num-option="">
+                                                <div class="number">
+                                                    <i>b)</i>
+                                                </div> 
+                                                <div class="text">
+                                                    Competencia Lingüística Particular (Nivel del Significado)
+                                                </div>
+                                            </div>
+                                            <div class="li-container" data-num-option="">
+                                                <div class="number">
+                                                    <i>c)</i>
+                                                </div> 
+                                                <div class="text">
+                                                    Saber Elocucional (Nivel de la Designación)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <button>Revisar</button>
+                                </div>
+                            </div>
+                            <div class="close-modal-card">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48">
+                                    <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="warning-container">
+                            <p>Mensaje Largo de Aviso de Notificacion</p>
+                        </div>
+                </article>
+            </div>
+        </section>
+        
+   </main>
+    <script>
+        const $body=document.body,
         $html=document.documentElement
 const dinamicIcons=[ //iconos dinamicos que se ocupar a lo largo del codigo
 `<svg class="svg-screen-change" xmlns="http://www.w3.org/2000/svg" height="38" viewBox="0 96 960 960" width="38">
@@ -460,8 +1482,8 @@ const userName=function(){
             issue:'UPDATE-USER',
             playerName:$player.playerName,
         }
-        console.log(JSON.stringify(callBackData));
-        connection.send(JSON.stringify(callBackData));
+        //console.log(JSON.stringify(callBackData));
+        //connection.send(JSON.stringify(callBackData));
     }
     console.log($player)
     
@@ -482,11 +1504,10 @@ const cardSelected=async function($container,className){//obtenemos el contenedo
             $fatherContainer=document.querySelector('.cards-container');
     console.log($container,$cardsObj);
     if($container.getAttribute("data-click")==="0"){ //se despliega la pregunta
-        if(positionCard===$cardsObj.actualViewing){
             $fatherContainer.classList.add('pointer-events-none');
-            $container.classList.add('card-selected');
-            await timeout(650);//esperamos 1 segundo
-            $container.classList.remove('card-selected');
+            //$container.classList.add('card-selected');
+            //await timeout(650);//esperamos 1 segundo
+            //$container.classList.remove('card-selected');
             $container.classList.add(className);
             $container.setAttribute("data-click","1");
             $titleTopic.textContent=questions[positionCard].nameTarget;
@@ -506,12 +1527,6 @@ const cardSelected=async function($container,className){//obtenemos el contenedo
             await timeout(300);//esperamos 1 segundo
             $cortain.classList.remove('opacity-0','pointer-events-none');
             $fatherContainer.classList.remove('pointer-events-none');
-        }
-        else{
-            $container.classList.add('wrong-card');
-            await timeout(1100);//esperamos 1 segundo
-            $container.classList.remove('wrong-card');
-        }
     }
     else{
         $container.classList.remove(className);
@@ -734,7 +1749,7 @@ const verifyCard=async function(e){
         score:$player.score,
     }
     console.log(JSON.stringify(callBackData));
-    connection.send(JSON.stringify(callBackData));  
+    //connection.send(JSON.stringify(callBackData));  
 }
 const optionSelected=function($container){
     const $options=document.querySelectorAll('.li-container')
@@ -787,7 +1802,7 @@ const warningMesages=async function(status){
     $container.style.setProperty("transform","translateY(100%)");
 }
 //CONNECTION FUNCTIONS
-//NETWORK FUNCTION
+/*NETWORK FUNCTION
 const connectionOffline=function(){
     warningMesages('Conexión wifi recuperada');
 }
@@ -890,7 +1905,7 @@ const connectWebSocket=function(){
     connection.addEventListener("error", handleOnError);
 }
 // Hacemos conexión al webSocket
- 
+ */
 
 document.addEventListener("DOMContentLoaded",()=>{
     darkLightModeStart();
@@ -925,6 +1940,10 @@ document.addEventListener("DOMContentLoaded",()=>{
     document.addEventListener("keyup",(e)=>{
         userName();
     });
-    connectWebSocket();
+    //connectWebSocket();
     
 })
+    </script>  
+</body>
+
+</html>
